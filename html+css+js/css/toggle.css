@@ -1,0 +1,67 @@
+
+.toggle-container {
+  display: flex;
+  align-items: center;   /* Vertically center content */
+  justify-content: space-between;
+}
+
+.toggle-text {
+  font-size: 10px;
+  margin: 0;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 30px;
+  height: 14px;
+}
+
+.toggle-switch .toggle-input {
+  display: none;
+}
+
+.toggle-switch .toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 14px;
+  /* background-color: #2196F3; */
+  background-color: #555;
+  border-radius: 20%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle-switch .toggle-label::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+}
+
+.toggle-switch .toggle-input:checked + .toggle-label {
+  background-color: #4CAF50;
+}
+
+.toggle-switch .toggle-input:checked + .toggle-label::before {
+  transform: translateX(15px);
+}
+
+
+/* Add the dimming effect for disabled state */
+.toggle-switch .toggle-input:disabled + .toggle-label {
+  opacity: 0.5; /* Adjust opacity to dim the switch */
+  cursor: not-allowed; /* Change cursor to indicate it's not interactive */
+}
+
+.toggle-switch .toggle-input:disabled + .toggle-label::before {
+  background-color: #ccc;  /* Optional: Adjust the knob color for better visibility */
+}
+

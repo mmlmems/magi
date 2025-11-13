@@ -1,0 +1,34 @@
+/* Nofication window for displaying assay info in temporary window */
+.notification-window {
+    width: 300px;
+    height: 120px;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    resize: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.notification-content {
+    text-align: center;
+    color: white;
+}
+
+.notification-content p {
+    display: block;         /* Ensures the <p> behaves like a block element */
+    align-items: center;
+    margin: 0 0 10px;       /* Adds spacing below the text */
+}
+
+.notification-content .spinner {
+    display: block;
+    margin-top: 10px;
+    margin: auto;       /* center in div */
+}
+

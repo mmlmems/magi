@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="UTF-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/buttons.css">
+	<link rel="stylesheet" href="css/notification-window.css">
+	<link rel="stylesheet" href="css/slider.css">
+	<link rel="stylesheet" href="css/spinner.css">
+	<link rel="stylesheet" href="css/title-bar.css">
+	<link rel="stylesheet" href="css/toggle.css">
+
+	<!-- "assay running" animation options: -->
+	<link rel="stylesheet" href="css/dots.css"> <!-- not currently used -->
+	<link rel="stylesheet" href="css/blink-array.css">
+
+	<script src="js/canvasjs.unbadged.js"></script>
+	<script src="js/magi.js" defer></script>
+	<title>MAGI</title>
+</head>
+
+<body>
+
+<!-- custom title bar for electron -->
+<div class="title-bar"> 
+  	<div id="title-bar-status-region"> 
+  		<div class="blink-array" id="blink-array">
+  			<div></div>
+  			<div></div>
+  			<div></div>
+  			<div></div>
+  			<div></div>
+  			<div></div>
+  			<div></div>
+  			<div></div>
+  			<div></div>
+  			<div></div>
+  			<div></div>
+  			<div></div>
+  		</div>
+  	</div>
+  	<p id="title-bar-text">Multiplexed Array Gene Imager</p>
+  	<img id="title-bar-image" src="img/mml.png">
+</div>  
+
+<div class="main-container">
+	<div class="chart-container">
+		<div class="chart-row">
+			<div class="side-button-container"> 
+				<button id="load" class="button" role="button" onclick="loadCard()">Load Card</button>
+    				<input type="file" id="hidden-card-file-input" accept=".card" style="display: none;" />
+				<button id="start" class="button" role="button" onclick="startAssay()">No Card<br>Loaded</button>
+				<div class="slider-container">
+				    <div id="period-slider-text" class="slider-text">Period: 15s</div>
+				    <input type="range" id="period-slider" class="slider" 
+				           min="2" max="30" value="15">
+		        </div>
+		        <div class="vertical-gap-10"></div>
+				<button id="stop" class="button" onclick="endAssay()">End</button>
+				<button id="saveraw" class="button" onclick="saveRaw()">Save Raw</button>
+		        <div class="vertical-gap-10"></div>
+			</div>
+			<div class="chart" id="rawDataChart">
+				<div class="text-center">Fluorescence</div>
+			</div>
+			<div class="chart" id="temperatureChart">
+				<div class="text-center">Temperature</div>
+			</div>
+		</div>
+		<div class="chart-row">
+			<div class="side-button-container"> 
+				<button id="analyze" class="button" onclick="analyzeData()">Analyze</button>
+				<div class="slider-container">
+				    <div id="filter-slider-text" class="slider-text">
+				    	f<sub class="sub75">c</sub> = f<sub class="sub75">nyq</sub>/10
+				    </div>
+				    <input type="range" id="filter-slider" class="slider" 
+				           min="1" max="20" value="10">
+				</div>
+				<div class="slider-container">
+				    <div id="cut-time-slider-text" class="slider-text">
+				    	t<sub class="sub75">cut</sub>: 0 min
+				    </div>
+				    <input type="range" id="cut-time-slider" class="slider" 
+				           min="0" max="20" step="0.1" value="0">
+				</div>
+				<div class="slider-container">
+				    <div id="threshold-slider-text" class="slider-text"> 
+				    	I<sub class="sub75">cut</sub>: 0
+				    </div>
+				    <input type="range" id="threshold-slider" class="slider" 
+				           min="0" max="25500" step="100" value="0">
+				</div>
+		        <div class="vertical-gap-10"></div>
+				<button id="toggleTTP" class="button" onclick="toggleTTP()">Show All Wells</button>
+				<button id="savefiltered" class="button" onclick="saveFiltered()"> Save Filtered </button>
+				<button id="saveTTP" class="button" onclick="saveTTP()">Save TTP</button>
+			</div>
+			<div class="chart" id="filteredDataChart">
+				<div class="text-center">Filtered Data</div>
+			</div>
+			<div class="chart" id="ttpChart">
+				<div class="text-center">Time to Positive</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="log-image-container">
+		<div class="log-image-row">
+			<div class="side-button-container"> 
+				<button id="getImage" class="button" role="button" onclick="getImage()"> Get Image </button>
+				
+				<div class="toggle-container">
+					<span class="toggle-text">Add ROIs: </span>
+					<div class="toggle-switch">
+						<input type="checkbox" class="toggle-input" id="add-rois" checked="true">
+						<label class="toggle-label" id="add-rois-label" for="add-rois"></label>
+					</div>
+				</div>
+
+			  	<button id="adjust" class="button" onclick="adjustImager()">Adjust Imager</button>
+			  	<button id="getLog" class="button" role="button" onclick="getServerLog()"> Get Log </button>
+			  	<button id="clearLog" class="button" role="button" onclick="clearServerLog()"> Clear Log </button>
+			  	<button id="reboot" class="button" role="button" onclick="reboot()"> Reboot </button>
+			  	<button id="shutdown" class="button" role="button" onclick="shutdown()"> Shutdown </button>
+			</div>
+			<div class="image-div"><img id="image"></div>
+			<div class="log" id="log"><b>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				Server Log</b><br><br></div>
+		</div>
+	</div>
+
+</div>
+
+</body>
+</html>

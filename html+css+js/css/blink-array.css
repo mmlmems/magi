@@ -1,0 +1,89 @@
+
+.blink-array,
+.blink-array div {
+  box-sizing: border-box;
+}
+.blink-array {
+  display: inline-block;
+  position: relative;
+  width: 30px;
+  height: 28px;    /* match height of title-bar */
+}
+.blink-array div {     /* individual square style */
+  margin-left: 0px;
+  margin-top: 4px;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 25%;
+  background: #00ff00;     /* square color */
+  animation: blink-array 2.0s linear infinite;
+}
+.blink-array div:nth-child(1) {
+  top: 0px;
+  left: 0px;
+  animation-delay: 0s;
+}
+.blink-array div:nth-child(2) {
+  top: 8px;
+  left: 0px;
+  animation-delay: -0.4s;
+}
+.blink-array div:nth-child(3) {
+  top: 16px;
+  left: 0px;
+  animation-delay: -0.8s;
+}
+.blink-array div:nth-child(4) {
+  top: 0px;
+  left: 8px;
+  animation-delay: -0.4s;
+}
+.blink-array div:nth-child(5) {
+  top: 8px;
+  left: 8px;
+  animation-delay: -0.8s;
+}
+.blink-array div:nth-child(6) {
+  top: 16px;
+  left: 8px;
+  animation-delay: -1.2s;
+}.blink-array div:nth-child(7) {
+  top: 0px;
+  left: 16px;
+  animation-delay: -0.8s;
+}
+.blink-array div:nth-child(8) {
+  top: 8px;
+  left: 16px;
+  animation-delay: -1.2s;
+}
+.blink-array div:nth-child(9) {
+  top: 16px;
+  left: 16px;
+  animation-delay: -1.6s;
+}
+.blink-array div:nth-child(10) {
+  top: 0px;
+  left: 24px;
+  animation-delay: -1.2s;
+}
+.blink-array div:nth-child(11) {
+  top: 8px;
+  left: 24px;
+  animation-delay: -1.6s;
+}
+.blink-array div:nth-child(12) {
+  top: 16px;
+  left: 24px;
+  animation-delay: -2.0s;
+}
+@keyframes blink-array {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.1;
+  }
+}
+

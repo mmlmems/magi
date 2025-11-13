@@ -1,0 +1,31 @@
+{
+  "well_config": 
+    [ 
+      ["mecA", "nuc", "femB", "POS"],
+      ["mecA", "nuc", "femB", "POS"],
+      ["mecA", "nuc", "femB", "NEG"]
+    ],
+  "roi_upper_left": [215,170],
+  "roi_width": 12,
+  "roi_height": 28,
+  "roi_spacing_x": 65,
+  "roi_spacing_y": 65,
+  "hit_criteria": 
+  { "MRSA":
+    {
+      "mecA": true,
+      "nuc": true,
+      "femB": true,
+      "POS": true,
+      "NEG": false
+    },
+    "MSSA":
+    {
+      "mecA": false,
+      "nuc": true,
+      "femB": true,
+      "POS": true,
+      "NEG": false
+    }
+  }
+}
